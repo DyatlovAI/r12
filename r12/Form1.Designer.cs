@@ -46,6 +46,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Вход";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -97,6 +98,7 @@
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Регистрация";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 

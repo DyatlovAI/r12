@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace r12
 {
@@ -12,7 +13,7 @@ namespace r12
         private const string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=LibraryDb;Integrated Security=True;";
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Tovari> Books { get; set; }
+        public DbSet<Tovari> Tovari { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,7 +23,7 @@ namespace r12
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasMany(u => u.Books)
+                .HasMany(u => u.Tovaris)
                 .WithOne(b => b.User)
                 .HasForeignKey(b => b.UserId);
         }

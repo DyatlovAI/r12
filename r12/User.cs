@@ -8,17 +8,16 @@ namespace r12
 {
         public class User
     {
-        
+        public int Id { get; set; }
         public string Name { get; set; }
         public string email { get; set; }
         public string number { get; set; }
+        public string password { get; set; }
+        public List<Tovari> Tovaris { get; set; }
+        public User()
+        {
+            Tovaris = new List<Tovari>();
+        }
     }
-    public class Tovari
-    {
-        public int Id { get; set; }
-        public string Date { get; set; }
-        public string Klient { get; set; }
-        public string Tovar { get; set; }
-        public string kolichestvo { get; set; }
-    }
+   
 }
