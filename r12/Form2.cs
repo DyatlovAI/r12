@@ -32,7 +32,9 @@ namespace r12
             {
                 Name = textBox1.Text,
                 email = textBox2.Text,
-                password = textBox3.Text
+                password = textBox3.Text,
+                number = textBox4.Text,
+                
             };
 
 

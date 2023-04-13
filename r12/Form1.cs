@@ -33,6 +33,7 @@ namespace r12
             {
                 var email = textBox1.Text;
                 var password = textBox2.Text;
+                
 
                 user = context.Users.FirstOrDefault(u => u.email == email && u.password == password);
             }

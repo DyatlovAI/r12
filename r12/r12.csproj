@@ -176,6 +176,16 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibraryDbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryDbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20230413052510_create.cs" />
+    <Compile Include="Migrations\20230413052510_create.designer.cs">
+      <DependentUpon>20230413052510_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="Tovari.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
@@ -219,6 +229,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="LibraryDbDataSet.xsc">
+      <DependentUpon>LibraryDbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibraryDbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibraryDbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LibraryDbDataSet.xss">
+      <DependentUpon>LibraryDbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

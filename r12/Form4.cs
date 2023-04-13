@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,24 +43,52 @@ namespace r12
             }
         }
 
-        
 
-        
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var selectedRow = dataGridView1.SelectedRows[0];
-            var tovari = (Tovari)selectedRow.DataBoundItem;
-            _user.Tovaris.Remove(tovari);
+            DataGridViewRow row = dataGridView1.SelectedRows[0];
+            int id = Convert.ToInt32(row.Cells["idDataGridViewTextBoxColumn"].Value);
+            var bookToRemove = _context.Tovari.FirstOrDefault(b => b.Id == id);
+            _context.Tovari.Remove(bookToRemove);
             _context.SaveChanges();
-
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = _user.Tovaris;
+            update();
         }
-
+        private void update()
+        {
+            List<Tovari> booksWithUserId = _context.Tovari.Where(b => b.UserId == _user.Id).ToList();
+            dataGridView1.DataSource = booksWithUserId;
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
+            this.tovariTableAdapter.Fill(this.libraryDbDataSet.Tovari);
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "libraryDbDataSet.Tovari". При необходимости она может быть перемещена или удалена.
+            this.tovariTableAdapter.Fill(this.libraryDbDataSet.Tovari);
+
+        }
+
+        private void fillByToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tovariTableAdapter.FillBy(this.libraryDbDataSet.Tovari, ((int)(System.Convert.ChangeType(iDToolStripTextBox.Text, typeof(int)))));
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
     }

@@ -20,12 +20,9 @@ namespace r12
             optionsBuilder.UseSqlServer(ConnectionString);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public void EnsureDatabaseCreated()
         {
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Tovaris)
-                .WithOne(b => b.User)
-                .HasForeignKey(b => b.UserId);
+            Database.EnsureCreated();
         }
     }
 }
